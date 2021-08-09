@@ -17,10 +17,11 @@ const starting = function () {
     if (isNumber(number)) {
       const trueNumber = +number;
       if (trueNumber > randomNumber) {
-        alert(`Увы! Заданное Вами число оказалось больше`);
+        alert(`Увы! Заданное Вами число оказалось больше. Попробуйте ввести другое число`);
         gameBot();
       } else if (trueNumber < randomNumber) {
-        alert(`Увы! Заданное Вами число оказалось меньше`);
+        alert(`Увы! Заданное Вами число оказалось меньше. Попробуйте ввести другое число`);
+        gameBot();
       } else {
         if (confirm(`В точку! Будем играть ещё?`)) {
           starting();
@@ -34,6 +35,8 @@ const starting = function () {
       gameBot();
     }
   };
+  console.dir(gameBot);
   gameBot();
 };
 starting();
+
