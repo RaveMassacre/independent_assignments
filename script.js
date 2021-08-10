@@ -8,31 +8,42 @@ let isNumber = function (n) {
 
 const starting = function () {
   let randomNumber = 13;
+  let nTrying = 10;
   const gameBot = function () {
-    const number = prompt(`Угадай число от 1 до 100. Для выхода из игры нажмите "Отмена"`);
-    if (number === null) {
-      alert(`До новых встреч!`);
-      return;
-    }
-    if (isNumber(number)) {
-      const trueNumber = +number;
-      if (trueNumber > randomNumber) {
-        alert(`Увы! Заданное Вами число оказалось больше. Попробуйте ввести другое число`);
-        gameBot();
-      } else if (trueNumber < randomNumber) {
-        alert(`Увы! Заданное Вами число оказалось меньше. Попробуйте ввести другое число`);
-        gameBot();
+    nTrying--;
+    if (nTrying < 0) {
+      if (confirm(`Попытки закончились. Будем играть ещё?`)) {
+        starting();
       } else {
-        if (confirm(`В точку! Будем играть ещё?`)) {
-          starting();
-        } else {
-          alert(`До новых встреч!`);
-          return;
-        }
+        alert(`До новых встреч!`);
+        return;
       }
     } else {
-      alert(`Вам нужно ввести число!`);
-      gameBot();
+      const number = prompt(`Угадай число от 1 до 100. Для выхода из игры нажмите "Отмена"`);
+      if (number === null) {
+        alert(`До новых встреч!`);
+        return;
+      }
+      if (isNumber(number)) {
+        const trueNumber = +number;
+        if (trueNumber > randomNumber) {
+          alert(`Увы! Заданное Вами число оказалось больше. Попробуйте ввести другое число`);
+          gameBot();
+        } else if (trueNumber < randomNumber) {
+          alert(`Увы! Заданное Вами число оказалось меньше. Попробуйте ввести другое число`);
+          gameBot();
+        } else {
+          if (confirm(`В точку! Будем играть ещё?`)) {
+            starting();
+          } else {
+            alert(`До новых встреч!`);
+            return;
+          }
+        }
+      } else {
+        alert(`Вам нужно ввести число!`);
+        gameBot();
+      }
     }
   };
   console.dir(gameBot);
