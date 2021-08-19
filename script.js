@@ -1,53 +1,14 @@
 'use strict';
 
-let isNumber = function (n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
+const addParagraph = function () {
+  const input = document.querySelector(`input`);
+  if (input.value.trim().length > 0) {
+    const li = document.createElement(`li`);
+    li.innerText = input.value.trim();
+    document.querySelector(`ul`).appendChild(li);
+  }
+
 };
 
-//Задание №6:
-
-const starting = function () {
-  let randomNumber = 13;
-  let nTrying = 10;
-  const gameBot = function () {
-    nTrying--;
-    if (nTrying < 0) {
-      if (confirm(`Попытки закончились. Будем играть ещё?`)) {
-        starting();
-      } else {
-        alert(`До новых встреч!`);
-        return;
-      }
-    } else {
-      const number = prompt(`Угадай число от 1 до 100. Для выхода из игры нажмите "Отмена"`);
-      if (number === null) {
-        alert(`До новых встреч!`);
-        return;
-      }
-      if (isNumber(number)) {
-        const trueNumber = +number;
-        if (trueNumber > randomNumber) {
-          alert(`Увы! Заданное Вами число оказалось больше. Попробуйте ввести другое число`);
-          gameBot();
-        } else if (trueNumber < randomNumber) {
-          alert(`Увы! Заданное Вами число оказалось меньше. Попробуйте ввести другое число`);
-          gameBot();
-        } else {
-          if (confirm(`В точку! Будем играть ещё?`)) {
-            starting();
-          } else {
-            alert(`До новых встреч!`);
-            return;
-          }
-        }
-      } else {
-        alert(`Вам нужно ввести число!`);
-        gameBot();
-      }
-    }
-  };
-  console.dir(gameBot);
-  gameBot();
-};
-starting();
-
+const button = document.querySelector(`button`);
+button.addEventListener('click', addParagraph);
