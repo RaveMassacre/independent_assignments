@@ -8,7 +8,7 @@ const todoControl = document.querySelector(`.todo-control`),
   todoRemove = document.querySelector(`.todo-remove`),
   todoData = [];
 
-const LoadStorage = function () {
+const loadStorage = function () {
   const lStr = localStorage.getItem(`todoList`);
   if (lStr !== null) {
     const writeStr = JSON.parse(lStr);
@@ -82,6 +82,6 @@ const bannedPlus = function () {
 
 
 bannedPlus();
-LoadStorage();
+loadStorage();
 document.addEventListener(`DOMContentLoaded`, render); // Событе автоматической подгрузки дел из storage
 headerInput.addEventListener(`input`, bannedPlus);
