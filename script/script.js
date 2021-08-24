@@ -42,8 +42,8 @@ const render = function () {
     } else {
       todoList.append(li);
     }
-    const BtnTodoCompleted = li.querySelector(`.todo-complete`);
-    BtnTodoCompleted.addEventListener(`click`, function () {
+    const btnTodoCompleted = li.querySelector(`.todo-complete`);
+    btnTodoCompleted.addEventListener(`click`, function () {
       item.completed = !item.completed;
       render();
       saveLocalStorage();
